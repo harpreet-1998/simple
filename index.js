@@ -38,6 +38,7 @@ function getVCDetails(calback){
       if(this.response){
           console.log('hello');
           calback(this.response);
+          
       }else{
           calback("Error"+request.status);
       }
