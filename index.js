@@ -66,8 +66,20 @@ const myPromise= new Promise((reslove,reject)=>{
 
 myPromise.then(
     (value)=>{ displayCallback(value);
-    },
-    (error)=>{
-        displayCallback(error)
     }
-)
+).catch(error=>{
+    displayCallback(error);
+})
+
+// const getId = new Promise((send, error) => { setTimeout(() => { send([1,2,34,4,55]); },2000) });
+// getId.then(result=> { console.log(result)} ).catch(e => { console.log('error'); });
+
+
+ async function vsf(){
+   
+        const centers= await fetch("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
+        console.log(await centers.json());
+      
+}
+
+vsf();
