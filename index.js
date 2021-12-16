@@ -18,7 +18,9 @@ const getDetails= function(currentYear){
 
 const btn= document.querySelector(".btn");
 btn.addEventListener("click",getDetails.bind(john,2021));
+console.log(getDetails.bind(john));
 
+getDetails.bind(john,2021)();
 
 getDetails.call(rimple,2021);
 
