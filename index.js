@@ -31,23 +31,23 @@ function displayCallback(res){
 console.log(JSON.parse(res));
 }
 
-function getVCDetails(calback){
-    let request= new XMLHttpRequest();
-    request.open('GET', "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
-    request.onload=function(){
-      if(this.response){
-          console.log('hello');
-          calback(this.response);
+// function getVCDetails(calback){
+//     let request= new XMLHttpRequest();
+//     request.open('GET', "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
+//     request.onload=function(){
+//       if(this.response){
+//           console.log('hello');
+//           calback(this.response);
           
-      }else{
-          calback("Error"+request.status);
-      }
-    }
-    request.send();
+//       }else{
+//           calback("Error"+request.status);
+//       }
+//     }
+//     request.send();
 
-}
+// }
 
-getVCDetails(displayCallback);
+// getVCDetails(displayCallback);
 
 
 const myPromise= new Promise((reslove,reject)=>{
@@ -72,8 +72,6 @@ myPromise.then(
     displayCallback(error);
 })
 
-// const getId = new Promise((send, error) => { setTimeout(() => { send([1,2,34,4,55]); },2000) });
-// getId.then(result=> { console.log(result)} ).catch(e => { console.log('error'); });
 
 
  async function vsf(){
@@ -84,3 +82,13 @@ myPromise.then(
 }
 
 vsf();
+
+
+const mypromise=new Promise((reslove,reject)=>{
+  setTimeout(()=>{reslove("hello after 4 Second")},4000);
+});
+mypromise.then(res=>{
+    console.log(res)
+}).catch(error=>{
+    console.log(error);
+})
