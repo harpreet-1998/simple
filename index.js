@@ -27,9 +27,9 @@
 // getDetails.apply(rimple, [2021]);
 
 
-function displayCallback(res){
-console.log(JSON.parse(res));
-}
+// function displayCallback(res){
+// console.log(JSON.parse(res));
+// }
 
 // function getVCDetails(calback){
 //     let request= new XMLHttpRequest();
@@ -50,22 +50,23 @@ console.log(JSON.parse(res));
 // getVCDetails(displayCallback);
 
 
-const myPromise= new Promise((reslove,reject)=>{
+// const myPromise= new Promise((reslove,reject)=>{
 
-        let request= new XMLHttpRequest();
-        request.open('GET', "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
+//         let request= new XMLHttpRequest();
+//         request.open('GET', "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
        
-        request.onload=function(){
-          if(this.response){
-              reslove(JSON.parse(this.response));
-          }else{
-               reject("Error"+request.status);
-          }
-        }
-        request.send();
+//         request.onload=function(){
+      
+//           if(this.response){
+//               reslove(this.response);
+//           }else{
+//                reject("Error"+request.status);
+//           }
+//         }
+//         request.send();
    
    
-});
+// });
 
 
 // myPromise.then(
@@ -77,35 +78,60 @@ const myPromise= new Promise((reslove,reject)=>{
 
 
 
- async function vsf(){
+//  async function vsf(){
    
-        const centers= await fetch("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
-         const centerres=await centers.json();
-        return  centerres;
+//         const centers= await fetch("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=148023&date=16-12-2021");
+//          const centerres=await centers.json();
+//         return  centerres;
       
-}
+// }
 
-const getId = new Promise((send, error) => { setTimeout(() => { send([1,2,34,4,55]); },2000) });
-getId.then(result=> { console.log(result)} ).catch(e => { console.log('error'); });
+// const getId = new Promise((send, error) => { setTimeout(() => { send([1,2,34,4,55]); },2000) });
+// getId.then(result=> { console.log(result)} ).catch(e => { console.log('error'); });
 
-const mypromise1=new Promise((reslove,reject)=>{
-  setTimeout(()=>{reslove("hello after 4 Second")},4000);
-});
-// mypromise1.then(res=>{
-//     console.log(res)
-// }).catch(error=>{
-//     console.log(error);
+// const mypromise1=new Promise((reslove,reject)=>{
+//   setTimeout(()=>{reslove("hello after 4 Second")},4000);
+// });
+// // mypromise1.then(res=>{
+// //     console.log(res)
+// // }).catch(error=>{
+// //     console.log(error);
+// // })
+
+
+// Promise.all([mypromise1,vsf(),myPromise,getId]).then(res=>{
+//     console.log(res);
+// })
+
+// Promise.any([mypromise1,vsf(),myPromise,getId]).then(res=>{
+//     console.log(res);
+// })
+
+// Promise.race([mypromise1,vsf(),myPromise,getId]).then(res=>{
+//     console.log(res);
 // })
 
 
-Promise.all([mypromise1,vsf(),myPromise,getId]).then(res=>{
-    console.log(res);
-})
+const mypromise4=new Promise((reslove,reject)=>{
+    setTimeout(()=>{reslove("hello after 4 Second")},4000);
+  });
 
-Promise.any([mypromise1,vsf(),myPromise,getId]).then(res=>{
-    console.log(res);
-})
+  
+const mypromise3=new Promise((reslove,reject)=>{
+    setTimeout(()=>{reslove("hello after 3 Second")},3000);
+  });
 
-Promise.race([mypromise1,vsf(),myPromise,getId]).then(res=>{
-    console.log(res);
-})
+  
+const mypromise2=new Promise((reslove,reject)=>{
+    setTimeout(()=>{reslove("hello after 2 Second")},2000);
+  });
+
+  
+const mypromise1=new Promise((reslove,reject)=>{
+    setTimeout(()=>{reslove("hello after 1 Second")},1000);
+  });
+
+
+  Promise.all([mypromise4,mypromise3,mypromise2,mypromise1]).then(
+      response=>{console.log(response)}
+  );
